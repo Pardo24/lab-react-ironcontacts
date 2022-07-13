@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+table{
+  margin-left: 35%;
+}
+
+.famos {
+  border: 1px solid rgb(19, 47, 92);
+
+}
