@@ -5,11 +5,15 @@ import {useState} from 'react'
 
 function App() {
   const contacts = ContactData.slice(0,5)
+  const [contactsall, setContactsAll] = useState(contacts);
+  
 
   const getRandomContact = () =>{
     const random= Math.floor(Math.random*ContactData.slice(5).length)
     const newContact= ContactData.slice(5)[random]
-    return newContact
+    const newContactData = [...contactsall, newContact]
+    setContactsAll(newContactData)
+    
   }
 
   return (<div className="App">
@@ -27,9 +31,8 @@ function App() {
     </tr>
   </thead>
   <tbody>
-    {contacts.map((contact)=>{
+    {contactsall.map((contact)=>{
       return(
-    
       <tr className="famos">
         <td><img src={contact.pictureUrl} alt={contact.name} width={100} height={150}/></td>
         <td>{contact.name}</td>
@@ -39,13 +42,7 @@ function App() {
       </tr>
     )
     })}
-    <tr>
-    <td><img src={getRandomContact.pictureUrl} alt={getRandomContact.name} width={100} height={150}/></td>
-        <td>{getRandomContact.name}</td>
-        <td>{Math.round(getRandomContact.popularity)}</td>
-        <td>{(getRandomContact.wonOscar)&& "🏆"}</td>
-        <td>{(getRandomContact.wonEmmy)&& "🏆"}</td>
-    </tr>
+    
     </tbody>
   </table>
   </div>)
